@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>College Ease</title>
+        <link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./assets/dist/fontawesome/css/all.css">
+        <link rel="stylesheet" href="./assets/dist/css/style.css">
+    </head>
+
+    <body cz-shortcut-listen="true">
+        <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0">
+            <a class="navbar-brand col-md-4 order-md-1 order-2 col-lg-3 me-0 px-3 d-flex justify-content-between"
+                href="dashboard.html">
+                <img src="./assets/img/bricks.png" alt="Img" height="60"><img src="./assets/img/logo.png" alt="Img"
+                    height="60"></a>
+            <button class="navbar-toggler order-1 d-md-none collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-nav order-3">
+                <div class="nav-item text-nowrap">
+                    <a class="btn btn-danger text-white rounded-5" href="logout.html"><i
+                            class="fal fa-sign-out"></i></a>
+                </div>
+            </div>
+        </header>
+        <div class="container-fluid">
+            <div class="row">
+                <nav id="sidebarMenu" class="col-md-4 col-lg-3 d-md-block bg-light sidebar collapse p-0">
+                    <div class="position-sticky sidebar-inner pt-3 ps-3">
+                        <ul class="nav flex-grow-1 overflow-auto flex-column flex-nowrap">
+                            <li class="nav-item ps-5 pb-2">
+                                <a class="nav-link" href="high_school_grads.html"> High school graduates </a>
+                            </li>
+                            <li class="nav-item ps-5 pb-2">
+                                <a class="nav-link" href="masters_post_grads.html"> Master's and Postgraduates </a>
+                            </li>
+                            <li class="nav-item ps-5 pb-2">
+                                <a class="nav-link active" href="gpa.html"> GPA Calculator </a>
+                            </li>
+                            <li class="nav-item ps-5 pb-2">
+                                <a class="nav-link" href="community.html"> Community Hub </a>
+                            </li>
+                            <li class="nav-item ps-5 pb-2">
+                                <a class="nav-link" href="faq.html"> FAQ </a>
+                            </li>
+                            <li class="nav-item ps-5 pb-2">
+                                <a class="nav-link" href="about.html"> About Us </a>
+                            </li>
+                            <li class="nav-item ps-5 pb-2">
+                                <a class="nav-link" href="contact.html"> Contact Us </a>
+                            </li>
+                        </ul>
+                        <div class="d-flex align-items-center gap-2 justify-content-center mt-3 py-4">
+                            <a href="#" class="btn btn-light border bg-teapink rounded-5 fs-20"><i
+                                    class="fab fa-whatsapp"></i></a>
+                            <a href="#" class="btn btn-light border bg-teapink rounded-5 fs-20"><i
+                                    class="fa fa-envelope"></i></a>
+                            <a href="#" class="btn btn-light border bg-teapink rounded-5 fs-20"><i
+                                    class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </nav>
+                <main class="col-md-8 ms-sm-auto col-lg-9 px-md-4">
+                    <div class="p-5">
+                        <div class="card rounded-5 bg-peach">
+                            <div class="card-body pt-0">
+                                <div class="text-center mb-4">
+                                    <img src="./assets/img/name.png" alt="Image" class="translate-5" height="80">
+                                </div>
+                                <table class="table bg-transparent" id="gpaTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Course</th>
+                                            <th>Grade</th>
+                                            <th>Credits</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="text" placeholder="eg: Course Name"
+                                                    class="form-control bg-peach">
+                                            </td>
+                                            <td>
+                                                <select class="form-control bg-peach">
+                                                    <option value="" selected disabled>Select Option</option>
+                                                    <option value="A">A</option>
+                                                    <option value="B">B</option>
+                                                    <option value="C">C</option>
+                                                    <option value="D">D</option>
+                                                    <option value="C">C</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="text" placeholder="eg: Course Name"
+                                                    class="form-control bg-peach">
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-dark bg-teapink border-0 rounded-5"
+                                                    onclick="removeRow(this)">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="text" placeholder="eg: Course Name"
+                                                    class="form-control bg-peach">
+                                            </td>
+                                            <td>
+                                                <select class="form-control bg-peach">
+                                                    <option value="" selected disabled>Select Option</option>
+                                                    <option value="A">A</option>
+                                                    <option value="B">B</option>
+                                                    <option value="C">C</option>
+                                                    <option value="D">D</option>
+                                                    <option value="C">C</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="text" placeholder="eg: Course Name"
+                                                    class="form-control bg-peach">
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-dark bg-teapink border-0 rounded-5"
+                                                    onclick="removeRow(this)">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="text" placeholder="eg: Course Name"
+                                                    class="form-control bg-peach">
+                                            </td>
+                                            <td>
+                                                <select class="form-control bg-peach">
+                                                    <option value="" selected disabled>Select Option</option>
+                                                    <option value="A">A</option>
+                                                    <option value="B">B</option>
+                                                    <option value="C">C</option>
+                                                    <option value="D">D</option>
+                                                    <option value="C">C</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="text" placeholder="eg: Course Name"
+                                                    class="form-control bg-peach">
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-dark bg-teapink border-0 rounded-5"
+                                                    onclick="removeRow(this)">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="text" placeholder="eg: Course Name"
+                                                    class="form-control bg-peach">
+                                            </td>
+                                            <td>
+                                                <select class="form-control bg-peach">
+                                                    <option value="" selected disabled>Select Option</option>
+                                                    <option value="A">A</option>
+                                                    <option value="B">B</option>
+                                                    <option value="C">C</option>
+                                                    <option value="D">D</option>
+                                                    <option value="C">C</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="text" placeholder="eg: Course Name"
+                                                    class="form-control bg-peach">
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-dark bg-teapink border-0 rounded-5"
+                                                    onclick="removeRow(this)">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="2">
+                                                <button onclick="addCourse()"
+                                                    class="btn btn-danger border-0 rounded-4 d-flex align-items-center gap-2 justify-content-center mx-auto">
+                                                    <span>Add Course</span>
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </td>
+                                            <td colspan="2">
+                                                <button
+                                                    class="btn btn-warning border-0 rounded-4 bg-teapink d-flex align-items-center gap-2 justify-content-center mx-auto">
+                                                    <span>Calculate</span>
+                                                    <i class="fa fa-chevron-right"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
+    <script src="./assets/dist/js/jquery.min.js"></script>
+    <script src="./assets/dist/js/bootstrap.min.js"></script>
+    <script src="./assets/dist/js/script.js"></script>
+
+</html>

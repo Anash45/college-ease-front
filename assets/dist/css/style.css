@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --peach-color: #f4e9dc;
+    --darkred-color: #b20303;
+    --black-color: #1c1712;
+    --white-color: #FFFFFF;
+    --teapink-color: #efa593;
+}
+
+.fs-8 {
+    font-size: 8px;
+}
+
+.fs-9 {
+    font-size: 9px;
+}
+
+.fs-10 {
+    font-size: 10px;
+}
+
+.fs-11 {
+    font-size: 11px;
+}
+
+.fs-12 {
+    font-size: 12px;
+}
+
+.fs-13 {
+    font-size: 13px;
+}
+
+.fs-14 {
+    font-size: 14px;
+}
+
+.fs-15 {
+    font-size: 15px;
+}
+
+.fs-16 {
+    font-size: 16px;
+}
+
+.fs-17 {
+    font-size: 17px;
+}
+
+.fs-18 {
+    font-size: 18px;
+}
+
+.fs-19 {
+    font-size: 19px;
+}
+
+.fs-20 {
+    font-size: 20px;
+}
+
+.fs-21 {
+    font-size: 21px;
+}
+
+.fs-22 {
+    font-size: 22px;
+}
+
+.fs-23 {
+    font-size: 23px;
+}
+
+.fs-24 {
+    font-size: 24px;
+}
+
+.fs-25 {
+    font-size: 25px;
+}
+
+.fs-26 {
+    font-size: 26px;
+}
+
+.fs-27 {
+    font-size: 27px;
+}
+
+.fs-28 {
+    font-size: 28px;
+}
+
+.fs-29 {
+    font-size: 29px;
+}
+
+.fs-30 {
+    font-size: 30px;
+}
+
+.libre-baskerville {
+    font-family: "Libre Baskerville", serif;
+}
+
+.abril {
+    font-family: "Abril Fatface", serif;
+}
+
+.montserrat {
+    font-family: "Montserrat", sans-serif;
+}
+
+.courier-prime {
+    font-family: "Courier Prime", monospace;
+}
+
+.bg-peach {
+    background-color: var(--peach-color);
+}
+
+.form-title {
+    font-size: 40px;
+}
+
+.form-subtitle {
+    letter-spacing: 2px;
+}
+
+.font-title {
+    font-size: 44px;
+    color: #b20303;
+}
+
+.btn-red {
+    background-color: #b20303;
+    color: #FFFFFF;
+}
+
+.text-red {
+    color: #b20303;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+a {
+    color: inherit;
+}
+
+main,
+.bg-teapink {
+    background-color: #efa593 !important;
+}
+
+.navbar,
+.navbar-brand,
+.sidebar,
+.bg-peach {
+    background-color: var(--peach-color) !important;
+}
+.sidebar-inner{
+    background-image: url(../../img/books.png);
+    background-size: 250px;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+.nav-link {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 900;
+    color: #1c1712;
+    font-size: 16px;
+    border-radius: 12px 0 0 12px;
+
+}
+
+.nav-link.active,
+.nav-link:hover {
+    background-color: var(--teapink-color);
+    color: #1c1712;
+}
+
+.page-title {
+    font-family: "Abril Fatface", serif;
+}
+
+.cap {
+    position: relative;
+}
+
+.cap::before {
+    content: "";
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    background-image: url(../../img/graduation-cap.png);
+    background-size: contain;
+    background-position: center;
+    top: -100%;
+    right: 10px;
+}
+
+
+.sidebar-inner {
+    top: 70px;
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bg-transparent td,
+.bg-transparent th {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.comp-label {
+    font-size: 18px;
+    background-color: goldenrod;
+    font-weight: bold;
+}
+
+.comp-value {
+    font-size: 18px;
+    font-family: "Libre Baskerville", serif;
+    font-weight: bold;
+}
+
+.faq-title {
+    font-size: 80px;
+    font-family: "Libre Baskerville", serif;
+}
+
+.accordion-button,
+.accordion-body {
+    background-color: transparent;
+    text-align: center;
+    color: #FFFFFF;
+    border: 0 !important;
+    box-shadow: 0 !important;
+    border-radius: 0 !important;
+    font-size: 1.2rem;
+}
+
+.accordion-item{
+    margin-bottom: 1.5rem;
+}
+.accordion-item,
+.accordion-button:not(.collapsed) {
+    border: 0 !important;
+    color: #FFFFFF;
+    background-color: #3b5269;
+    border-radius: 0 !important;
+}
+.accordion-button{
+    font-weight: bold;
+}
+.accordion-button:not(.collapsed){
+    box-shadow: none;
+    border-radius: 0 !important;
+}
+
+.accordion-button::after{
+    content: "" !important;
+    width: 0 !important;
+    overflow: hidden !important;
+    border-radius: 0 !important;
+}
+
+.about-img{
+    width: 200px;
+    height: 200px;
+    border-radius: 9999px;
+    object-fit: cover;
+    border: 5px solid var(--peach-color);
+    outline: 20px solid #ffcec1;
+}
+
+.bg-brown{
+    background-color: #ffcec1;
+}

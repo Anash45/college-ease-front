@@ -6,6 +6,7 @@
     --black-color: #1c1712;
     --white-color: #FFFFFF;
     --teapink-color: #efa593;
+    --tea-color: #f1c09c;
 }
 
 .fs-8 {
@@ -101,23 +102,27 @@
 }
 
 .libre-baskerville {
-    font-family: "Libre Baskerville", serif;
+    font-family: "Libre Baskerville", serif !important;
 }
 
 .abril {
-    font-family: "Abril Fatface", serif;
+    font-family: "Abril Fatface", serif !important;
 }
 
 .montserrat {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif !important;
 }
 
 .courier-prime {
-    font-family: "Courier Prime", monospace;
+    font-family: "Courier Prime", monospace !important;
 }
 
 .bg-peach {
     background-color: var(--peach-color);
+}
+
+.bg-tea {
+    background-color: var(--tea-color);
 }
 
 .form-title {
@@ -155,18 +160,24 @@ main,
     background-color: #efa593 !important;
 }
 
+.bg-red {
+    background-color: #b20303 !important;
+}
+
 .navbar,
 .navbar-brand,
 .sidebar,
 .bg-peach {
     background-color: var(--peach-color) !important;
 }
-.sidebar-inner{
+
+.sidebar-inner {
     background-image: url(../../img/books.png);
     background-size: 250px;
     background-repeat: no-repeat;
     background-position: center bottom;
 }
+
 .nav-link {
     font-family: "Libre Baskerville", serif;
     font-weight: 900;
@@ -245,9 +256,10 @@ main,
     font-size: 1.2rem;
 }
 
-.accordion-item{
+.accordion-item {
     margin-bottom: 1.5rem;
 }
+
 .accordion-item,
 .accordion-button:not(.collapsed) {
     border: 0 !important;
@@ -255,22 +267,24 @@ main,
     background-color: #3b5269;
     border-radius: 0 !important;
 }
-.accordion-button{
+
+.accordion-button {
     font-weight: bold;
 }
-.accordion-button:not(.collapsed){
+
+.accordion-button:not(.collapsed) {
     box-shadow: none;
     border-radius: 0 !important;
 }
 
-.accordion-button::after{
+.accordion-button::after {
     content: "" !important;
     width: 0 !important;
     overflow: hidden !important;
     border-radius: 0 !important;
 }
 
-.about-img{
+.about-img {
     width: 200px;
     height: 200px;
     border-radius: 9999px;
@@ -279,6 +293,84 @@ main,
     outline: 20px solid #ffcec1;
 }
 
-.bg-brown{
+.bg-brown {
     background-color: #ffcec1;
+}
+
+.post {
+    text-decoration: none;
+    margin-bottom: 30px;
+}
+
+.post-top {
+    overflow: hidden;
+}
+
+.post-title {
+    max-width: calc(100% - 48px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.post-closed {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+    color: #FFFFFF;
+    justify-content: center;
+    border: 5px solid teal;
+}
+
+.post-border {
+    height: 3px;
+    background-color: #b20303;
+    width: 100%;
+    position: relative;
+    margin-top: 5px;
+}
+
+.post-border::before {
+    content: "";
+    height: 15px;
+    width: 15px;
+    background-color: #b20303;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.post-border::after {
+    content: "";
+    height: 15px;
+    width: 15px;
+    background-color: #b20303;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.table-programs,
+.table-programs tbody td {
+    background-color: transparent;
+    border-color: #c0c0c0 !important;
+}
+
+.table-programs thead th {
+    background-color: #e24f01;
+    border: 0 !important;
+}
+.comp-name{
+    font-size: 20px;
+    border-bottom: 1px solid #1c1712;
+    border-radius: 0 !important;
+}
+
+#gpaRow{
+    display: none;
 }

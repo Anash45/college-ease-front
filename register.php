@@ -1,3 +1,45 @@
+<?php
+// Include the database connection file
+require_once "db_conn.php";
+
+
+$name = $email = $password = $role = "";
+$info = "";
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Define variables and initialize with empty values
+
+    // Process form data when the form is submitted
+    $name = mysqli_real_escape_string($conn, $_POST["name"]);
+    $email = mysqli_real_escape_string($conn, $_POST["email"]);
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $role = mysqli_real_escape_string($conn, $_POST["role"]);
+
+    // Check if the email already exists in the database
+    $sql_check_email = "SELECT * FROM users WHERE Email='$email'";
+    $result_check_email = mysqli_query($conn, $sql_check_email);
+
+    if (mysqli_num_rows($result_check_email) > 0) {
+        // Email already exists
+        $info = '<div class="alert alert-danger">Email already exists!</div>';
+    } else {
+        // Email does not exist, insert user into the database
+        $sql_insert_user = "INSERT INTO users (Name, Email, Password, Role) VALUES ('$name', '$email', '$password', '$role')";
+
+        if (mysqli_query($conn, $sql_insert_user)) {
+            // User inserted successfully
+            $info = '<div class="alert alert-success">User created successfully!</div>';
+        } else {
+            // Error inserting user
+            $info = '<div class="alert alert-danger">Error creating user: ' . mysqli_error($conn) . '</div>';
+        }
+        $name = $email = $password = $role = "";
+    }
+
+    // Close connection
+    mysqli_close($conn);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,15 +68,16 @@
                         <div class="card-body pt-5">
                             <form action="" method="post" class="container">
                                 <h2 class="fw-bold text-center montserrat font-title">Create New Account</h2>
+                                <?php echo $info; ?>
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Name</label>
                                     <input type="text" class="form-control form-control-lg rounded-5 bg-light" id="name"
-                                        name="name" required>
+                                        name="name" value="<?php echo $name; ?>" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" class="form-control form-control-lg rounded-5 bg-light"
-                                        id="email" name="email" required>
+                                        id="email" name="email" value="<?php echo $email; ?>" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
@@ -53,7 +96,7 @@
                                 <div class="text-center mb-2">
                                     <button type="submit" class="btn btn-red btn-lg rounded-5 w-100">Sign Up</button>
                                 </div>
-                                <p class="text-red text-center"><small>Already Registered? <a href="login.html"
+                                <p class="text-red text-center"><small>Already Registered? <a href="login.php"
                                             class="fw-bold text-red">Login</a></small></p>
                             </form>
                         </div>

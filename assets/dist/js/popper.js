@@ -25,7 +25,7 @@ function isElement(node) {
 }
 
 function isHTMLElement(node) {
-  var OwnElement = getWindow(node).HTMLElement;
+  var OwnElement = getWindow(node).phpElement;
   return node instanceof OwnElement || node instanceof HTMLElement;
 }
 

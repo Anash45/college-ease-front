@@ -12,7 +12,7 @@ if(isset($_GET['delete'])) {
     $contactID = $_GET['delete'];
 
     // Delete the program from the database
-    $sql = "DELETE FROM ContactMessages WHERE ID = $contactID";
+    $sql = "DELETE FROM contactmessages WHERE ID = $contactID";
 
     if (mysqli_query($conn, $sql)) {
         // Redirect to success page or display success message
@@ -61,7 +61,7 @@ if(isset($_GET['delete'])) {
                             <tbody>
                                 <?php
                                 // Query to select all records from the programs table
-                                $sql = "SELECT * FROM ContactMessages";
+                                $sql = "SELECT * FROM contactmessages";
 
                                 // Execute the query
                                 $result = mysqli_query($conn, $sql);

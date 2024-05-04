@@ -41,6 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['home_url'] = 'dashboard.php';
                 } elseif ($_SESSION['Role'] == 'student') {
                     $_SESSION['home_url'] = 'highschool_grads.php';
+                } elseif ($_SESSION['Role'] == 'alumni') {
+                    $_SESSION['home_url'] = 'masters_post_grads.php';
                 }
 
                 // Redirect to home page

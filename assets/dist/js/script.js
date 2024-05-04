@@ -103,10 +103,42 @@ function calculateGPA() {
 
     // Calculate GPA
     var gpa = totalGradePoints / totalCredits;
-    
+
     document.getElementById('gpaValue').textContent = gpa.toFixed(2);
-    
+
     gpaRow.style.display = 'table-row';
     // Log the GPA to the console
     console.log('GPA:', gpa.toFixed(2));
+}
+
+$(document).ready(function () {
+    $('.program_check').change(function () {
+        var checkedCount = $('.program_check:checked').length;
+
+        // Disable other checkboxes if two are checked
+        if (checkedCount >= 2) {
+            $('.program_check:not(:checked)').prop('disabled', true);
+            $('.compare_float').prop('disabled', false);
+        } else {
+            $('.program_check:not(:checked)').prop('disabled', false);
+            $('.compare_float').prop('disabled', true);
+        }
+        handleProgramCheckboxes();
+    });
+});
+function handleProgramCheckboxes() {
+    $('.card').removeClass('card_checked');
+
+    // Add card_checked class to parent card of checked checkboxes
+    $('.program_check:checked').closest('.card').addClass('card_checked');
+}
+
+function programDetails(universityName, type, location, rank, scholarships, careerServices) {
+    $('#universityName').text(universityName);
+    $('#typeOfUniversity').text(type);
+    $('#location').text(location);
+    $('#rank').text(rank);
+    $('#scholarships').text(scholarships);
+    $('#careerServices').text(careerServices);
+    $('#programDetailsModal').modal('show');
 }

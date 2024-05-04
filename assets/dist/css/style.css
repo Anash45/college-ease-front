@@ -210,7 +210,7 @@ main,
     background-size: contain;
     background-position: center;
     top: -100%;
-    right: 10px;
+    right: 0px;
 }
 
 
@@ -373,4 +373,50 @@ main,
 
 #gpaRow{
     display: none;
+}
+.compare_float{
+    position: fixed;
+    right: 0;
+    top: 150px;
+    z-index: 9;
+    width: fit-content;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem 0 0 0.5rem;
+    font-weight: 500;
+}
+.compare_float:hover{
+    background-color: #202020;
+    color: #FFFFFF;
+}
+
+.compare_float:disabled{
+    pointer-events: unset !important;
+    opacity: 0.7;
+}
+
+
+.program_check{
+    display: none !important;
+}
+.compare-card{
+    cursor: pointer;
+}
+.card_checked{
+    border-color: green;
+    box-shadow: 0 0 10px lightgreen;
+}
+.post-disabled{
+    opacity: 0.7;
+    position: relative;
+}
+.post-disabled::after{
+    cursor: not-allowed;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
 }

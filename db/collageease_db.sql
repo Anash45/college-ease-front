@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2024 at 08:43 PM
+-- Generation Time: May 04, 2024 at 12:54 PM
 -- Server version: 8.0.35
 -- PHP Version: 8.2.0
 
@@ -47,6 +47,51 @@ INSERT INTO `comments` (`commentID`, `content`, `userID`, `postID`, `createdAt`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contactmessages`
+--
+
+CREATE TABLE `contactmessages` (
+  `ID` int NOT NULL,
+  `Name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `Email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `Message` text COLLATE utf8mb4_general_ci NOT NULL,
+  `CreatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contactmessages`
+--
+
+INSERT INTO `contactmessages` (`ID`, `Name`, `Email`, `Message`, `CreatedAt`) VALUES
+(2, 'Syed Muhammad Anas Bukhari', 'f4futuretech@gmail.com', 'Abcd Test.', '2024-05-02 23:54:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faqs`
+--
+
+CREATE TABLE `faqs` (
+  `fId` int NOT NULL,
+  `question` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `answer` text COLLATE utf8mb4_general_ci NOT NULL,
+  `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `faqs`
+--
+
+INSERT INTO `faqs` (`fId`, `question`, `answer`, `createdAt`) VALUES
+(1, 'WHY DO UNIVERSITIES FREQUENTLY DELAY ANNOUNCING THEIR DATES?', 'The lack of a university means that she often has not announced her dates yet.', '2024-04-29 02:18:09'),
+(2, 'WHO IS ELIGIBLE FOR GRADUATE STUDIES AND BRIDGING PROGRAMS?', 'Graduate studies and bridging are not for high school graduates.', '2024-04-29 02:19:33'),
+(3, 'HOW CAN THE REGISTRATION DATES BE OBTAINED?', 'You can tell us the registration dates by clicking here for appointments.', '2024-04-29 02:19:45'),
+(4, 'Test', 'aadasd', '2024-04-29 02:26:26'),
+(5, 'Test', 'aadasd', '2024-04-29 02:26:36');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `posts`
 --
 
@@ -56,6 +101,7 @@ CREATE TABLE `posts` (
   `content` text COLLATE utf8mb4_general_ci,
   `userID` int NOT NULL,
   `closed` tinyint(1) DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -63,9 +109,11 @@ CREATE TABLE `posts` (
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`postID`, `title`, `content`, `userID`, `closed`, `createdAt`) VALUES
-(2, 'New Post', 'New\r\nPost \r\ntesting... 1234', 1, 0, '2024-04-18 17:19:35'),
-(3, 'Post Test By User', 'This is the post testing by user.', 2, 1, '2024-04-18 18:01:32');
+INSERT INTO `posts` (`postID`, `title`, `content`, `userID`, `closed`, `status`, `createdAt`) VALUES
+(2, 'New Post', 'New\r\nPost \r\ntesting... 1234', 1, 0, 0, '2024-04-18 17:19:35'),
+(3, 'Post Test By User 1', 'This is the post testing by user.', 2, 1, 1, '2024-04-18 18:01:32'),
+(4, 'Test', 'Testing\r\n', 3, 0, 1, '2024-05-03 00:00:09'),
+(6, 'Test Alumni', 'Alumni post.', 3, 0, 1, '2024-05-03 00:08:52');
 
 -- --------------------------------------------------------
 
@@ -94,7 +142,8 @@ CREATE TABLE `programs` (
 INSERT INTO `programs` (`ID`, `Name`, `State`, `Degree`, `Registration_Date`, `Registration_Link`, `createdAt`, `Location`, `Rank`, `Scholarships`, `Career_Services`) VALUES
 (2, 'UMT', 'public', 'masters', '2024-04-11', 'https://onlineadmissions.umt.edu.pk/', '2024-04-17 23:45:41', 'JHKL', 13, 'Not Included', 'Included'),
 (3, 'UMS University', 'private', 'phd', '2024-04-20', 'https://onlineadmissions.umt.edu.pk/', '2024-04-18 17:07:29', 'LHR', 12, 'Included', 'Not Included'),
-(4, 'UMS University', 'private', 'phd', '2024-04-20', 'https://onlineadmissions.umt.edu.pk/', '2024-04-18 17:07:32', 'LHR', 12, 'Included', 'Not Included');
+(4, 'UMS University', 'private', 'phd', '2024-04-20', 'https://onlineadmissions.umt.edu.pk/', '2024-04-18 17:07:32', 'LHR', 12, 'Included', 'Not Included'),
+(5, 'Test', 'public', 'bachelors', '2024-04-09', 'https://onlineadmissions.umt.edu.pk/', '2024-04-29 03:09:01', 'ISB', 21, 'Not Included', 'Included');
 
 -- --------------------------------------------------------
 
@@ -116,7 +165,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`ID`, `Name`, `Email`, `Password`, `Role`) VALUES
 (1, 'Admin', 'admin@gmail.com', '$2y$10$p0X1BbTbnPNtHLSk6fcba.DbWa0s.4LjTW4kAXNhNMh6k8XrDuqSi', 'admin'),
-(2, 'Abcd', 'abc@xyz.com', '$2y$10$x/lJFyeYrSAPtK/HEfzP9ODDkxC9KnlWN9GOi/k.FUUPLl1egfSWC', 'student');
+(2, 'Abcd', 'abc@xyz.com', '$2y$10$x/lJFyeYrSAPtK/HEfzP9ODDkxC9KnlWN9GOi/k.FUUPLl1egfSWC', 'student'),
+(3, 'Alumni', 'abc1@xyz.com', '$2y$10$ZVSEB8HzKlFEEvHIfP4ko.avHL1I8oqTQNVgX0G.8wKzlmjXjkUI2', 'alumni');
 
 -- --------------------------------------------------------
 
@@ -148,6 +198,18 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`commentID`),
   ADD KEY `userID` (`userID`),
   ADD KEY `postID` (`postID`);
+
+--
+-- Indexes for table `contactmessages`
+--
+ALTER TABLE `contactmessages`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `faqs`
+--
+ALTER TABLE `faqs`
+  ADD PRIMARY KEY (`fId`);
 
 --
 -- Indexes for table `posts`
@@ -187,22 +249,34 @@ ALTER TABLE `comments`
   MODIFY `commentID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `contactmessages`
+--
+ALTER TABLE `contactmessages`
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `faqs`
+--
+ALTER TABLE `faqs`
+  MODIFY `fId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `postID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `postID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `programs`
 --
 ALTER TABLE `programs`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `votes`

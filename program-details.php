@@ -24,22 +24,10 @@ if(!isLoggedIn()){
                 <main class="col-md-8 ms-sm-auto col-lg-9 px-md-4 py-4">
                     <div
                         class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                        <h2 class="h2 page-title">Comparison</h2>
+                        <h2 class="h2 page-title">Program Details</h2>
                     </div>
                     <div class="row">
-                        <div class="col-4 px-sm-2 px-1">
-                            <div class="card rounded-5 bg-transparent border-0">
-                                <div class="card-body p-sm-3 p-1">
-                                    <p class="mb-3 p-2 rounded-5 text-center comp-label"> Name </p>
-                                    <p class="mb-3 p-2 rounded-5 text-center comp-label"> Type of universiy </p>
-                                    <p class="mb-3 p-2 rounded-5 text-center comp-label"> Location </p>
-                                    <p class="mb-3 p-2 rounded-5 text-center comp-label"> Rank </p>
-                                    <p class="mb-3 p-2 rounded-5 text-center comp-label"> Scholarships </p>
-                                    <p class="mb-3 p-2 rounded-5 text-center comp-label"> Career Services </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-8 px-sm-2 px-1">
+                        <div class="col-8 px-sm-2 px-1 mx-auto">
                             <?php
                             // Check if programID is set in the URL parameter
                             if (isset($_GET['programID'])) {

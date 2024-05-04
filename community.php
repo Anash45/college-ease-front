@@ -1,7 +1,7 @@
 <?php
 // Include the database connection file
 require_once "db_conn.php";
-if(!isLoggedIn()){
+if (!isLoggedIn()) {
     header('location:login.php');
 }
 
@@ -87,6 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_post'])) {
                                 $userID = $row['userID'];
                                 $createdAt = $row['createdAt'];
                                 $closed = $row['closed'] ? '<span class="post-closed rounded-5 bg-red lh-1"><i class="fa fa-check"></i></span>' : '';
+                                $status = !$row['status'] ? '<p><span class="badge bg-red lh-1">Disabled</span></p>' : '';
 
                                 // Format date
                                 $createdAtFormatted = date('h:i dS M, Y', strtotime($createdAt));
@@ -96,26 +97,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_post'])) {
                                 $result_user = mysqli_query($conn, $sql_user);
                                 $user = mysqli_fetch_assoc($result_user);
                                 $userName = $user['Name'];
-
+                                $closedClass = !$row['status'] ? 'post-disabled': '';
                                 // Generate HTML markup for the post
-                                echo '<a href="post-details.php?postID=' . $postID . '" class="post d-flex flex-column gap-1">';
+                                echo '<div class="w-100 '. $closedClass .'">';
+                                echo '<a href="post-details.php?postID=' . $postID . '" class="post d-flex flex-column">';
                                 echo '<div class="post-top d-flex align-items-center gap-3">';
                                 echo '<h3 class="post-title fw-bold fs-24 courier-prime mb-0">' . $title . '</h3>';
                                 echo $closed;
                                 echo '</div>';
+                                echo $status;
                                 echo '<div class="post-bottom d-flex gap-3 align-items-center justify-content-between">';
                                 echo '<p class="d-flex gap-2 fs-14 fw-medium mb-0"><span>' . $userName . '</span><span class="fw-bold">.</span><span>' . $createdAtFormatted . '</span></p>';
                                 // Count comments for the post (assuming it's stored in another table)
                                 $sql_comments = "SELECT COUNT(*) AS commentCount FROM comments WHERE postID=$postID";
                                 $result_comments = mysqli_query($conn, $sql_comments);
                                 $commentCount = mysqli_fetch_assoc($result_comments)['commentCount'];
-                                echo '<p class="d-flex flex-column align-items-center justify-content-center mb-0 gap-2 fw-bold">';
+                                echo '<p class="d-flex flex-column align-items-center justify-content-center mb-0 gap-0 fw-bold">';
                                 echo '<span>' . $commentCount . '</span>';
                                 echo '<span>Comments</span>';
                                 echo '</p>';
                                 echo '</div>';
                                 echo '<div class="post-border"></div>';
                                 echo '</a>';
+                                echo '</div>';
                             }
                         } else {
                             // No posts found

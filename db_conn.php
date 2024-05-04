@@ -87,3 +87,32 @@ function getVotesCount($conn)
     $row = mysqli_fetch_assoc($result);
     return $row['totalVotes'];
 }
+
+function getStudentsCount($conn)
+{
+    $sql_students = "SELECT COUNT(*) AS totalStudents FROM users WHERE Role = 'student'";
+    $result_students = mysqli_query($conn, $sql_students);
+    $row_students = mysqli_fetch_assoc($result_students);
+    return $row_students['totalStudents'];
+}
+
+function getAlumniCount($conn)
+{
+    $sql_alumni = "SELECT COUNT(*) AS totalAlumni FROM users WHERE Role = 'alumni'";
+    $result_alumni = mysqli_query($conn, $sql_alumni);
+    $row_alumni = mysqli_fetch_assoc($result_alumni);
+    return $row_alumni['totalAlumni'];
+}
+
+function getAdminsCount($conn)
+{
+    $sql_admins = "SELECT COUNT(*) AS totalAdmins FROM users WHERE Role = 'admin'";
+    $result_admins = mysqli_query($conn, $sql_admins);
+    $row_admins = mysqli_fetch_assoc($result_admins);
+    return $row_admins['totalAdmins'];
+}
+// Function to sanitize input
+function sanitize($data)
+{
+    return htmlspecialchars(stripslashes(trim($data)));
+}

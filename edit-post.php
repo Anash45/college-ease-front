@@ -6,6 +6,7 @@ if(!isLoggedIn()){
 }
 
 $info = '';
+$userID = $_SESSION['ID'];
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && (isAdmin() || isLoggedIn())) {
     // Define variables and initialize with empty values
@@ -17,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && (isAdmin() || isLoggedIn())) {
     $content = mysqli_real_escape_string($conn, $_POST["content"]);
 
     // Check if the user is the owner of the post
-    if (!isAdmin()) {
+    if (!isAdmin() && !isAlumni()) {
         // Query to check if the user is the owner of the post
         $checkQuery = "SELECT * FROM posts WHERE postID = $id AND userID = $userID"; // Replace 'USER_ID' with the actual user ID
         $result = mysqli_query($conn, $checkQuery);

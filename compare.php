@@ -41,10 +41,10 @@ if(!isLoggedIn()){
                             </div>
                         </div>
                         <?php
-                        if (isset($_GET['program1']) && isset($_GET['program2'])) {
+                        if (isset($_GET['programs'])) {
                             // Get the program IDs from the URL params
-                            $program1_id = isset($_GET['program1']) ? $_GET['program1'] : null;
-                            $program2_id = isset($_GET['program2']) ? $_GET['program2'] : null;
+                            $program1_id = isset($_GET['programs']) ? $_GET['programs'][0] : null;
+                            $program2_id = isset($_GET['programs']) ? $_GET['programs'][1] : null;
 
                             // Fetch program data from the database for program 1
                             $sql_program1 = "SELECT * FROM programs WHERE ID = $program1_id";

@@ -1,19 +1,19 @@
 <?php
 // Include the database connection file
 require_once "db_conn.php";
-if(!isLoggedIn()){
+if (!isLoggedIn()) {
     header('location:login.php');
 }
+$userID = $_SESSION['ID'];
 // Initialize response variable
 $info = "";
 if (isset($_GET['delete'])) {
     // Get the program ID from the URL parameter
     $post_id = $_GET['delete'];
     // Check if the user is the owner of the post
-    if (!isAdmin()) {
-        $userID = $_SESSION['ID'];
+    if (!isAdmin() && !isAlumni()) {
         // Query to check if the user is the owner of the post
-        $checkQuery = "SELECT * FROM posts WHERE postID = $id AND userID = $userID"; // Replace 'USER_ID' with the actual user ID
+        $checkQuery = "SELECT * FROM posts WHERE postID = $post_id AND userID = $userID"; // Replace 'USER_ID' with the actual user ID
         $result = mysqli_query($conn, $checkQuery);
         if (mysqli_num_rows($result) == 0) {
             // If the user is not the owner of the post, redirect or show an error message
@@ -31,7 +31,25 @@ if (isset($_GET['delete'])) {
         // Display error message
         $info = '<div class="alert alert-danger">Error: ' . mysqli_error($conn) . '</div>';
     }
-}
+} else
+    if (isset($_GET['status'])) {
+        // Get the program ID from the URL parameter
+        $post_id = $_GET['ID'];
+        $status = $_GET['status'];
+        // Check if the user is the owner of the post
+        if (isAdmin() || isAlumni()) {
+            // Delete the program from the database
+            $sql = "UPDATE posts SET status = '$status' WHERE postID = $post_id";
+
+            if (mysqli_query($conn, $sql)) {
+                // Redirect to success page or display success message
+                $info = '<div class="alert alert-success">Post status changed successfully!</div>';
+            } else {
+                // Display error message
+                $info = '<div class="alert alert-danger">Error: ' . mysqli_error($conn) . '</div>';
+            }
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,21 +90,21 @@ if (isset($_GET['delete'])) {
                             <tbody>
                                 <?php
                                 // Fetch posts from the database based on user's role
-                                if (isAdmin()) {
+                                if (isAdmin() || isAlumni()) {
                                     // Query to fetch all posts for admin
                                     $sql = "SELECT posts.*, users.Name, COUNT(comments.commentID) AS Comments
             FROM posts
             LEFT JOIN users ON posts.userID = users.ID
             LEFT JOIN comments ON posts.postID = comments.postID
             GROUP BY posts.postID";
-                                } elseif (isLoggedIn()) {
+                                } elseif (isStudent()) {
                                     // Query to fetch only user's posts
                                     // Replace 'USER_ID' with the actual user ID
                                     $sql = "SELECT posts.*, users.Name, COUNT(comments.commentID) AS Comments
             FROM posts
             LEFT JOIN users ON posts.userID = users.ID
             LEFT JOIN comments ON posts.postID = comments.postID
-            WHERE posts.userID = 'USER_ID'
+            WHERE posts.userID = '$userID'
             GROUP BY posts.postID";
                                 }
 
@@ -97,9 +115,13 @@ if (isset($_GET['delete'])) {
                                 if (mysqli_num_rows($result) > 0) {
                                     // Loop through each row in the result set
                                     while ($row = mysqli_fetch_assoc($result)) {
+                                        $status = $row['status'] ? '<a href="?status=0&ID=' . $row['postID'] . '" class="btn btn-sm rounded-5 btn-warning mx-1" title="Disable"><i class="fa fa-times"></i></a>' : '<a href="?status=1&ID=' . $row['postID'] . '" class="btn btn-sm rounded-5 btn-success mx-1" title="Enable"><i class="fa fa-check"></i></a>';
                                         echo '<tr>';
                                         echo '<td>';
                                         echo '<a href="edit-post.php?ID=' . $row['postID'] . '" class="btn btn-sm rounded-5 btn-primary"><i class="fa fa-edit"></i></a>';
+                                        if (isAdmin() || isAlumni()) {
+                                            echo $status;
+                                        }
                                         echo '<a href="?delete=' . $row['postID'] . '" onclick="return confirm(\'Do you really want to delete this?\')" class="btn btn-sm rounded-5 btn-danger ms-1"><i class="fa fa-trash"></i></a>';
                                         echo '</td>';
                                         echo '<td><span class="badge bg-tea text-dark rounded-5 px-3 py-2 fs-14">POST-' . $row['postID'] . '</span></td>';

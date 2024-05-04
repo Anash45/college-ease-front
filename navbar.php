@@ -10,12 +10,21 @@
                 <li class="nav-item ps-5 pb-2">
                     <a class="nav-link" href="statistics.php"> Statistics </a>
                 </li>
+                <li class="nav-item ps-5 pb-2">
+                    <a class="nav-link" href="ad_contacts.php"> Contacts </a>
+                </li>
                 <?php
             }
             ?>
-            <li class="nav-item ps-5 pb-2">
-                <a class="nav-link" href="highschool_grads.php"> High school graduates </a>
-            </li>
+            <?php
+            if (isStudent()) {
+                ?>
+                <li class="nav-item ps-5 pb-2">
+                    <a class="nav-link" href="highschool_grads.php"> High school graduates </a>
+                </li>
+                <?php
+            }
+            ?>
             <li class="nav-item ps-5 pb-2">
                 <a class="nav-link" href="masters_post_grads.php"> Master's and Postgraduates </a>
             </li>

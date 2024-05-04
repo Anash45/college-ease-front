@@ -80,7 +80,7 @@ if(isset($_GET['delete'])) {
                                         echo '<td><span class="badge bg-tea text-dark rounded-5 px-3 py-2 fs-14">' . $row['Name'] . '</span></td>';
                                         echo '<td><span class="badge bg-tea text-dark rounded-5 px-3 py-2 fs-14">' . $row['Email'] . ' University</span></td>';
                                         echo '<td><span class="badge bg-tea text-dark rounded-5 px-3 py-2 fs-14">' . $row['Message'] . '</span></td>';
-                                        echo '<td><span class="badge bg-tea text-dark rounded-5 px-3 py-2 fs-14">' . date('h:i a d M, Y', strtotime($row['CreatedAt'])) . '</span></td>';
+                                        echo '<td><span class="badge bg-primary fs-10">' . date('h:i a d M, Y', strtotime($row['CreatedAt'])) . '</span></td>';
                                         echo '</tr>';
                                     }
                                 } else {

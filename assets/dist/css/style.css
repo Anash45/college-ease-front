@@ -420,3 +420,11 @@ main,
     right: 0;
     z-index: 1;
 }
+.contact-page main{
+    background-image: url(../../img/contact-bg.png);
+    background-position: center;
+    background-size: cover;
+}
+.login-img{
+    height: 150px !important;
+}

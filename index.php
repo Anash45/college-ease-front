@@ -18,7 +18,7 @@
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-position: center;
-                background: linear-gradient(178.6deg, rgb(20, 36, 50) 11.8%, rgb(124, 143, 161) 83.8%);
+                background: linear-gradient(178.6deg, #efa593 11.8%, #f1c09c 83.8%);
             }
 
             .content {
@@ -58,7 +58,7 @@
             .button {
                 --border-right: 6px;
                 --text-stroke-color: rgba(255, 255, 255, 0.6);
-                --animation-color: rgb(20, 36, 50);
+                --animation-color: #b20303;
                 --fs-size: 2em;
                 letter-spacing: 3px;
                 text-decoration: none;
@@ -105,7 +105,7 @@
                 position: absolute;
                 width: 100%;
                 height: 100%;
-                border: 2px solid black;
+                border: 2px solid #b20303;
                 border-radius: 32% 58% 69% 43% / 48% 32% 59% 55%;
                 transition: 0.5s;
                 animation: animate 6s linear infinite;
@@ -113,7 +113,7 @@
 
             .twitch:hover .one {
                 border: none;
-                background: rgb(20, 36, 50);
+                background: #b20303;
             }
 
             .square .two {
@@ -122,7 +122,7 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                border: 2px solid black;
+                border: 2px solid #b20303;
                 border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
                 transition: 0.5s;
                 animation: animate 6s linear infinite;
@@ -130,7 +130,7 @@
 
             .twitch:hover .two {
                 border: none;
-                background: rgb(20, 36, 50);
+                background: #b20303;
             }
 
             .square .three {
@@ -139,7 +139,7 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                border: 2px solid black;
+                border: 2px solid #b20303;
                 border-radius: 31% 45% 74% 35% / 38% 56% 51% 37%;
                 transition: 0.5s;
                 animation: animate2 10s linear infinite;
@@ -147,7 +147,7 @@
 
             .twitch:hover .three {
                 border: none;
-                background: rgb(20, 36, 50);
+                background: #b20303;
             }
 
             .circle {

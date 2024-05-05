@@ -68,22 +68,22 @@ mysqli_close($conn);
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>College Ease</title>
+        <title>CollageEase</title>
         <link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="./assets/dist/fontawesome/css/all.css">
         <link rel="stylesheet" href="./assets/dist/css/style.css">
     </head>
 
     <body class="bg-peach d-flex flex-column justify-content-center align-items-center py-5">
-        <div class="container">
-            <div class="row align-items-center">
+        <div class="container d-flex flex-column align-items-center justify-content-center">
+            <div class="row align-items-center w-100">
                 <div class="col-md-6">
                     <img src="./assets/img/logo.png" alt="Logo" width="80" class="img-fluid d-block mb-3">
                     <div class="text-uppercase libre-baskerville">
                         <h1 class="fw-bold form-title fw-normal">WELCOME!</h1>
                         <p class="form-subtitle">Stay on top of it</p>
                     </div>
-                    <img src="./assets/img/bricks.png" alt="Bricks" height="400" class="img-fluid">
+                    <img src="./assets/img/name.png" alt="Image" class="img-fluid login-img">
                 </div>
                 <div class="col-md-5 mx-auto">
                     <div class="card rounded-5 pt-3">

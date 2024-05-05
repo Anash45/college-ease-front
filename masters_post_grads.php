@@ -10,7 +10,7 @@ if (!isLoggedIn()) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>College Ease</title>
+        <title>CollageEase</title>
         <link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="./assets/dist/fontawesome/css/all.css">
         <link rel="stylesheet" href="./assets/dist/css/style.css">
@@ -39,6 +39,11 @@ if (!isLoggedIn()) {
                                     // Loop through each program and display it in the specified format
                                     while ($row = mysqli_fetch_assoc($result)) {
                                         $universityName = $row['Name'];
+                                        $typeOfUniversity = $row['State'];
+                                        $location = $row['Location'];
+                                        $rank = $row['Rank'];
+                                        $scholarships = $row['Scholarships'];
+                                        $careerServices = $row['Career_Services'];
                                         // Display the program in the specified format
                                         echo '<div class="col-sm-6 px-lg-5 px-md-4 px-3 py-3">';
                                         echo '<label class="card compare-card rounded-5">';
@@ -48,7 +53,7 @@ if (!isLoggedIn()) {
                                         echo '<img src="./assets/img/university-logo.png" alt="Uni logo" height="50">';
                                         echo '<h4 class="h4 libre-baskerville fw-bold mb-0 cap">' . $universityName . '</h4>';
                                         echo '<div class="d-flex align-items-center justify-content-center gap-3">';
-                                        echo '<a href="program-details.php?programID=' . $row['ID'] . '" class="btn btn-light btn-sm bg-peach d-flex align-items-center gap-2 fw-medium"><span>Know More</span> <i class="fa fa-plus fs-8"></i></a>';
+                                        echo '<button type="button" onclick="programDetails(`' . htmlspecialchars($universityName) . '`,`' . htmlspecialchars($typeOfUniversity) . '`,`' . htmlspecialchars($location) . '`,`' . htmlspecialchars($rank) . '`,`' . htmlspecialchars($scholarships) . '`,`' . htmlspecialchars($careerServices) . '`)" class="btn btn-light btn-sm bg-peach d-flex align-items-center gap-2 fw-medium"><span>Know More</span> <i class="fa fa-plus fs-8"></i></button>';
                                         echo '<a href="' . $row['Registration_Link'] . '" target="_blank" class="btn btn-light btn-sm bg-peach d-flex align-items-center gap-2 fw-medium"><span>Register Now</span> <i class="fal fa-sign-in fs-12"></i></a>';
                                         echo '</div>';
                                         echo '</div>';
